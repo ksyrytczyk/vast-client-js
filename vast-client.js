@@ -1580,12 +1580,12 @@ XHRURLHandler = (function() {
       xhr.timeout = options.timeout || 0;
       xhr.withCredentials = options.withCredentials || false;
       xhr.overrideMimeType('text/xml');
-      xhr.send();
-      return xhr.onreadystatechange = function() {
+      xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
           return cb(null, xhr.responseXML);
         }
       };
+      return xhr.send();
     } catch (_error) {
       return cb();
     }
